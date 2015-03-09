@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.appspot.letflyfiles.LoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Pushup</servlet-name>
+		<servlet-class>com.appspot.letflyfiles.PushupServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>List</servlet-name>
+		<servlet-class>com.appspot.letflyfiles.ListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Serve</servlet-name>
+		<servlet-class>com.appspot.letflyfiles.ServeServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Delete</servlet-name>
+		<servlet-class>com.appspot.letflyfiles.DeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Pushup</servlet-name>
+		<url-pattern>/pushup</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>List</servlet-name>
+		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Serve</servlet-name>
+		<url-pattern>/serve</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Delete</servlet-name>
+		<url-pattern>/delete</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>User</filter-name>
+		<filter-class>com.appspot.letflyfiles.UserFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>User</filter-name>
+		<url-pattern>/pushup</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>User</filter-name>
+		<url-pattern>/list</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>User</filter-name>
+		<url-pattern>/serve</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>User</filter-name>
+		<url-pattern>/delete</url-pattern>
+	</filter-mapping>
+<!--
+	<filter>
+	    <filter-name>Encoding</filter-name>
+	    <filter-class>com.appspot.letflyfiles.EncodingFilter</filter-class>
+	    <init-param>
+	        <param-name>encoding</param-name>
+	        <param-value>UTF-8</param-value>
+	    </init-param>
+	</filter>
+	<filter-mapping>
+	    <filter-name>Encoding</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+-->
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+
+	<welcome-file-list>
+		<welcome-file>login</welcome-file>
+	</welcome-file-list>
+</web-app>
